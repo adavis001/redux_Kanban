@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BookList from '../../components/BookList';
+import QueueList from '../../components/QueueList';
+import ProgressList from '../../components/ProgressList';
+import DoneList from '../../components/DoneList';
 import NewBookForm from '../NewBookForm';
 import { addBookToFakeXHR, getBooksFromFakeXHR } from '../../lib/books.db';
 import { loadBooks, addBook } from '../../actions';
@@ -49,10 +51,14 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Gambatte Kanban-te!</h2>
+          <h2>Book a Task!  .then Assign it to someone!</h2>
         </div>
-        <BookList books={this.props.books} />
         <NewBookForm addBook={this.addBook} />
+        <div id="BookIt">
+          <QueueList books={this.props.books} />
+          <ProgressList books={this.props.books} />
+          <DoneList books={this.props.books} />
+        </div>
       </div>
     );
   }

@@ -2,11 +2,45 @@
   text-align: center;
 }
 
+#BookQueue{
+    text-align: center;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
+#BookThing{
+  border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
+  box-shadow: -1px 10px 18px -4px rgba(0, 0, 0, 0.75);
+  background-color: gold;
+  text-align: center;
+  width: 25vw
+}
+#BookIt{
+  background-color: tomato;
+  display: flex;
+  text-align: center;
+}
+.BookQueue{
+  width: 33%;
+  align-content: center;
+}
+
+.BookProgress{
+  width: 33%;
+    align-content: center;
+}
+
+.BookDone{
+  width: 33%;
+  align-content: center;
+}
+
+.BookList{
+  background-color: black;
+}
 .App-header {
   background-color: tomato;
   height: 150px;

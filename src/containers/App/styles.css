@@ -16,7 +16,8 @@
   box-shadow: -1px 10px 18px -4px rgba(0, 0, 0, 0.75);
   background-color: gold;
   text-align: center;
-  width: 25vw
+  margin: auto;
+  width: 85%;
 }
 #BookIt{
   background-color: tomato;

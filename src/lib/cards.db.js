@@ -1,9 +1,9 @@
-const booksFromFakeDB = [{
+const cardsFromFakeDB = [{
       id: 1,
       title : 'Order Pizza',
       priority : 'Medium',
       status: 'Done',
-      author: 'Alexander Davis',
+      createdBy: 'Alexander Davis',
       assignedTo: 'Ernest Tsang'
     },
     {
@@ -11,7 +11,7 @@ const booksFromFakeDB = [{
       title : 'Eat Pizza',
       priority : 'High',
       status: 'In Progress',
-      author: 'Alexander Davis',
+      createdBy: 'Alexander Davis',
       assignedTo: 'Ernest Tsang'
     },
     {
@@ -19,19 +19,19 @@ const booksFromFakeDB = [{
       title : 'Exercise',
       priority : 'Low',
       status: 'Queue',
-      author: 'Ernest Tsang',
+      createdBy: 'Ernest Tsang',
       assignedTo: 'Alexander Davis'
     }
   ];
 
-export const getBooksFromFakeXHR = () => new Promise((resolve, reject) => {
-  setTimeout(() => resolve(booksFromFakeDB), 500);
+export const getCardsFromFakeXHR = () => new Promise((resolve, reject) => {
+  setTimeout(() => resolve(cardsFromFakeDB), 500);
 });
 
-export const addBookToFakeXHR = (book) => new Promise((resolve, reject) => {
+export const addCardToFakeXHR = (card) => new Promise((resolve, reject) => {
   setTimeout(() => {
-    book._id = Math.random();
-    booksFromFakeDB.push(book);
-    resolve(booksFromFakeDB);
+    card._id = Math.random();
+    cardsFromFakeDB.push(card);
+    resolve(cardsFromFakeDB);
   }, 500);
 });

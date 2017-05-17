@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QueueList from '../../components/QueueList';
-import ProgressList from '../../components/ProgressList';
-import DoneList from '../../components/DoneList';
-import NewBookForm from '../NewBookForm';
-import { addBookToFakeXHR, getBooksFromFakeXHR } from '../../lib/books.db';
-import { loadBooks, addBook } from '../../actions';
+import CardList from '../../components/CardList';
+import NewCardForm from '../NewCardForm';
+import { addCardToFakeXHR, getCardsFromFakeXHR } from '../../lib/cards.db';
+import { loadCards, addCard, editCard } from '../../actions';
 
 
 import logo from './logo.svg';
@@ -17,12 +15,12 @@ class App extends Component {
     super(props);
     // do your shit after parent is done doing their shit
 
-    this.title = 'Book List App';
+    this.title = 'Card List App';
 
     // set the initial state of THIS COMPONENT
     // in the constructor
     // this.state = {
-    //   books : [],
+    //   cards : [],
     //   filter : ''
     // };
 
@@ -31,33 +29,39 @@ class App extends Component {
   // life cycle hook
   // before rendering this component
   componentWillMount(){
-    getBooksFromFakeXHR()
-      .then( books => {
-        this.props.loadBooks( books );
-        // this.setState({ books });
+    getCardsFromFakeXHR()
+      .then( cards => {
+        this.props.loadCards( cards );
       });
   }
 
-  addBook = ( book ) => {
-    // addBookToFakeXHR( book )
-    //   .then( books => {
-    //     this.setState({ books });
-    //   });
-    this.props.addBook( book );
+  addCard = ( card ) => {
+    this.props.addCard( card );
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Book a Task!  .then Assign it to someone!</h2>
+      <div>
+      <h1>Welcome to Kanban! </h1>
+        <div id="CardForm">
+        <h2>New Task Form</h2>
+          <NewCardForm addCard={this.addCard}/>
         </div>
-        <NewBookForm addBook={this.addBook} />
-        <div id="BookIt">
-          <QueueList books={this.props.books} />
-          <ProgressList books={this.props.books} />
-          <DoneList books={this.props.books} />
+       <div id="Board">
+        <div id="queue">
+          <h2>Queue</h2>
+            <CardList  cards={this.props.cards.filter(Card => Card.status === 'Queue' )}/>
+          </div>
+
+          <div id="progress">
+          <h2>Progress</h2>
+            <CardList  cards={this.props.cards.filter(Card => Card.status === 'In Progress' )}/>
+          </div>
+
+          <div id="done">
+          <h2>Done</h2>
+            <CardList  cards={this.props.cards.filter(Card => Card.status === 'Done' )}/>
+          </div>
         </div>
       </div>
     );
@@ -66,17 +70,20 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    books: state.books
+    cards: state.cards
   };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    loadBooks: books => {
-      dispatch(loadBooks(books))
+    loadCards: cards => {
+      dispatch(loadCards(cards))
     },
-    addBook: book => {
-      dispatch(addBook(book))
+    addCard: card => {
+      dispatch(addCard(card))
+    },
+    editCard: card => {
+      dispatch(editCard(card))
     }
   }
 }

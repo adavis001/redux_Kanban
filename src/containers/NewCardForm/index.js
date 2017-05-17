@@ -1,30 +1,26 @@
 /*jshint esversion:6*/
 import React, { Component } from 'react';
 
-class NewBookForm extends Component {
+class NewCardForm extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       title : '',
-      author : '',
+      createdBy : '',
       status : '',
       priority : '',
       assignedTo : ''
     };
-
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    // this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
 
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.addBook(this.state);
+    this.props.addCard(this.state);
 
-    this.setState({ author : '', title : '', assignedTo: '' });
+    this.setState({ createdBy : '', title : '', assignedTo: '' });
 
 
 
@@ -53,9 +49,9 @@ class NewBookForm extends Component {
     });
   }
 
-  handleChangeAuthor = (event) => {
+  handleChangeCreatedBy= (event) => {
     this.setState({
-      author : event.target.value
+      createdBy : event.target.value
     });
   }
 
@@ -66,7 +62,7 @@ class NewBookForm extends Component {
           <input type="text" placeholder="Title" value={this.state.title} onChange={this.handleChangeTitle} />
         </div>
         <div>
-          <input type="text" placeholder="Author" value={this.state.author} onChange={this.handleChangeAuthor} />
+          <input type="text" placeholder="Created By" value={this.state.createdBy} onChange={this.handleChangeCreatedBy} />
         </div>
         <div>
           <input type="text" placeholder="Assigned To" value={this.state.assignedTo} onChange={this.handleAssignedToChange} />
@@ -82,11 +78,11 @@ class NewBookForm extends Component {
           <input type='radio'  name='priority' value='Low' onChange={this.handlePriorityChange} />Low
         </div>
         <div>
-          <button type="submit">Add Book</button>
+          <button type="submit">Add Card</button>
         </div>
       </form>
     );
   }
 }
 
-export default NewBookForm;
+export default NewCardForm;

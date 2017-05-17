@@ -1,20 +1,34 @@
 // import { getBooksFromFakeXHR } from '../../lib/books.db';
 
-export const LOAD_BOOKS = 'LOAD_BOOKS';
-export const ADD_BOOK = 'ADD_BOOK';
+export const LOAD_CARDS = 'LOAD_CARDS';
+export const ADD_CARD = 'ADD_CARD';
+export const EDIT_CARD = 'EDIT_CARD';
 
-export const loadBooks = books => {
+export const loadCards = cards => {
   return {
-    type: LOAD_BOOKS,
-    books
+    type: LOAD_CARDS,
+    cards
   };
 };
 
-export const addBook = book => {
+export const addCard = card => {
 
   return {
-    type: ADD_BOOK,
-    book
+    type: ADD_CARD,
+    card
   };
 
 };
+
+export function editCard(id, title, priority, status, createdBy, assignedTo) {
+  return {
+    type: EDIT_CARD,
+    id,
+    title,
+    priority,
+    status,
+    createdBy,
+    assignedTo
+  };
+}
+

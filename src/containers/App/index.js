@@ -39,6 +39,11 @@ class App extends Component {
     this.props.addCard( card );
   }
 
+  editCard = ( card ) => {
+    this.props.editCard( card );
+    console.log(card);
+  }
+
   render() {
     return (
       <div>

@@ -31,10 +31,8 @@ const cards = (state = initialState, action) => {
         }
       });
       return Object.assign({}, state, {
-        cards: [
-          ...edited
-        ]
-      });
+          cards: edited
+        });
 
     case ADD_CARD:
       return Object.assign({}, state, {

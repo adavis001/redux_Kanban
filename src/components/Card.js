@@ -65,22 +65,24 @@ class Card extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
  handleClick(card) {
-  switch (card.status) {
+  var newData = Object.assign({}, this.props);
+  console.log(newData);
+  switch ( newData.status) {
     case "Queue":
-        card.status = "In Progress";
+        newData.status = "In Progress";
         break;
     case "In Progress":
-        card.status = "Done";
+        newData.status = "Done";
         break;
     case "Done":
-        card.status = "Queue";
+        newData.status = "Queue";
         break;
   }
-    this.setState({});
+    this.setState({status: event.target.value});
+    console.log(newData);
   }
   updateCard(card){
     // update my parent's cards state
-    this.props.updateCard(card);
     const title = "";
     const priority = "";
     const status = "";
@@ -91,6 +93,7 @@ class Card extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.updateCard(this.state);
+    console.log(event);
   }
 // DOM targets
   handleStatusChange(event) {

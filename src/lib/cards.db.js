@@ -4,7 +4,7 @@ const cardsFromFakeDB = [{
       priority : 'Medium',
       status: 'Done',
       createdBy: 'Alexander Davis',
-      assignedTo: 'Ernest Tsang'
+      assignedTo: 'Ernest Tsang',
     },
     {
       id: 2,
@@ -30,8 +30,12 @@ export const getCardsFromFakeXHR = () => new Promise((resolve, reject) => {
 
 export const addCardToFakeXHR = (card) => new Promise((resolve, reject) => {
   setTimeout(() => {
-    card._id = Math.random();
+    card._id = Math.floor.random();
     cardsFromFakeDB.push(card);
     resolve(cardsFromFakeDB);
   }, 500);
+});
+
+export const editCardFromFakeXHR = (card) => new Promise((resolve,reject) => {
+
 });
